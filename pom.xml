@@ -9,7 +9,7 @@
         <dependency>
             <groupId>org.jsoup</groupId>
             <artifactId>jsoup</artifactId>
-            <version>1.8.1</version>
+            <version>1.11.2</version>
         </dependency>
         <dependency>  
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -19,17 +19,7 @@
         <dependency>
             <groupId>org.mongodb</groupId>
             <artifactId>mongo-java-driver</artifactId>
-            <version>2.10.1</version>
-        </dependency>
-        <dependency>
-            <groupId>net.sourceforge.htmlunit</groupId>
-            <artifactId>htmlunit</artifactId>
-            <version>2.29</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jaunt-lang</groupId>
-            <artifactId>jaunt</artifactId>
-            <version>1.9.0-master-SNAPSHOT</version>
+            <version>3.6.3</version>
         </dependency>
     </dependencies>
     <properties>
