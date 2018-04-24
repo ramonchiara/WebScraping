@@ -12,10 +12,16 @@ import org.jsoup.select.Elements;
 public class Program {
 
     public static void main(String[] args) throws IOException {
+        String tipos = "Notícia";
+        String dataInicial = "01-01-2014";
+        String dataFinal = "31-12-2014";
+        String categorias = "Política";
+
         ObjectMapper mapper = new ObjectMapper();
 
         for (int page = 0; page < 5; page++) {
-            String json = Jsoup.connect("http://www.valor.com.br/busca/gasolina?method=ajax&page=" + page).method(Connection.Method.POST).execute().body();
+            String url = String.format("http://www.valor.com.br/busca/gasolina?Tipos=%s&datainicial=%s&datafinal=%s&Categorias=%s&method=ajax&page=%d", tipos, dataInicial, dataFinal, categorias, page);
+            String json = Jsoup.connect(url).method(Connection.Method.POST).execute().body();
             JsonNode obj = mapper.readTree(json);
             String html = obj.get("result").asText();
 
