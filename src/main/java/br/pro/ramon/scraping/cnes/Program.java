@@ -2,6 +2,7 @@ package br.pro.ramon.scraping.cnes;
 
 import com.machinepublishers.jbrowserdriver.JBrowserDriver;
 import java.util.List;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 public class Program {
@@ -34,7 +35,14 @@ public class Program {
                     do {
                         // mostra/usa os dados
                         WebElement dados = driver.findElementByCssSelector("table#example");
-                        System.out.println(dados.getText());
+                        List<WebElement> trs = dados.findElements(By.cssSelector("tr"));
+                        for (WebElement tr : trs) {
+                            List<WebElement> tds = tr.findElements(By.cssSelector("td"));
+                            for (WebElement td : tds) {
+                                System.out.println(td.getText());
+                            }
+                            System.out.println("-------------------------");
+                        }
 
                         // carrega os dados de paginação
                         WebElement infoElem = driver.findElementById("example_info");
