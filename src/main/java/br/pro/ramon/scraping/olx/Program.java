@@ -1,4 +1,4 @@
-package br.pro.ramon.scraping.jsoup;
+package br.pro.ramon.scraping.olx;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;

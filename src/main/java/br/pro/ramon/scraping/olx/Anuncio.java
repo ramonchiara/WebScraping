@@ -1,4 +1,4 @@
-package br.pro.ramon.scraping.jsoup;
+package br.pro.ramon.scraping.olx;
 
 import java.util.HashMap;
 import java.util.Map;
