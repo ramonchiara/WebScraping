@@ -1,7 +1,9 @@
 package br.pro.ramon.scraping.cnes;
 
 import com.machinepublishers.jbrowserdriver.JBrowserDriver;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -11,14 +13,21 @@ public class Program {
         JBrowserDriver driver = new JBrowserDriver();
 
         // carrega a página principal
-        String url = "http://cnes2.datasus.gov.br/Listar_Mantidas.asp?VCnpj=46392130000380";
-        driver.get(url);
+        String urlInicial = "http://cnes2.datasus.gov.br/Listar_Mantidas.asp?VCnpj=46392130000380";
+        driver.get(urlInicial);
 
-        // decobre os links dos mantidos
+        // decobre os links das mantidas...
         List<WebElement> links = driver.findElementsByCssSelector("a");
+        // ... e os guarda em um conjunto (que não tem repetição)
+        Set<String> urlsMantidas = new LinkedHashSet<>();
         for (WebElement link : links) {
+            urlsMantidas.add(link.getAttribute("href"));
+        }
+
+        for (String url : urlsMantidas) {
             // carrega a página de uma mantida
-            url = link.getAttribute("href");
+            System.out.println("=========================");
+            System.out.printf("Visitando %s...%n", url);
             driver.get(url);
 
             // descobre os botões de módulos
@@ -64,7 +73,7 @@ public class Program {
             }
 
             // tirar esse break para processar todos os mantidos
-            break;
+            // break;
         }
 
         driver.quit();
